@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Eleitoral | VNCx</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { gold: '#C5A059', dark: '#050505', charcoal: '#0d0d0d' }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #f4f4f5; }
+        .glass { background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .bg-gradient-hero { background: linear-gradient(to bottom, rgba(5,5,5,0.2), #050505), url('https://images.unsplash.com/photo-1540910419892-f0c976c78c66?q=80&w=1600'); background-size: cover; background-position: center; }
+        
+        /* Animação para o menu mobile */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            opacity: 0;
+            visibility: hidden;
+        }
+        #mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-[100] p-6 flex justify-between items-center glass">
+        <div class="text-2xl font-black tracking-tighter uppercase italic z-[110]">
+            VNC<span class="text-brand-gold font-light not-italic">x</span>
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <a href="index.html" class="hover:text-brand-gold transition-colors">Home</a>
+            <a href="#metodo" class="hover:text-brand-gold transition-colors">Método</a>
+            <a href="#reputacao" class="hover:text-brand-gold transition-colors">Reputação</a>
+            <a href="https://w.app/agenciavncx" class="text-brand-gold border border-brand-gold px-4 py-1 rounded-full hover:bg-brand-gold hover:text-black transition-all">Contrate Estratégia</a>
+        </nav>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 z-[110] outline-none">
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </button>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black/95 z-[105] flex flex-col items-center justify-center md:hidden">
+        <nav class="flex flex-col items-center gap-10 text-2xl uppercase tracking-[0.5em] font-light">
+            <a href="index.html" class="mobile-link">Início</a>
+            <a href="publicidade.html" class="mobile-link">Publicidade</a>
+            <a href="trafegopago.html" class="mobile-link">Tráfego Pago</a>
+            <a href="https://w.app/agenciavncx" class="mt-4 px-10 py-4 bg-gradient-to-r from-brand-gold to-yellow-200 text-black font-black rounded-full active:scale-90 transition-transform tracking-widest text-sm italic">
+                CONTRATE AGORA
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="relative h-[80vh] flex flex-col justify-center items-center text-center px-6 bg-gradient-hero">
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 max-w-5xl">
+                <span class="text-brand-gold font-black uppercase tracking-[0.5em] text-xs mb-4 block">Estratégia de Alta Performance</span>
+                <h1 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none mb-6">
+                    De Visualizações <br><span class="text-brand-gold not-italic">a Votos Reais</span>
+                </h1>
+                <p class="text-zinc-300 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+                    Presencial ou à distância: Construímos a imagem que o eleitor confia e a reputação que a oposição não abala.
+                </p>
+            </div>
+        </section>
+
+        <section id="metodo" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-6xl font-black uppercase italic mb-8 leading-none">Onipresença <br><span class="text-brand-gold">Estratégica</span></h2>
+                    <div class="space-y-8">
+                        <div class="glass p-8 rounded-3xl">
+                            <h4 class="text-brand-gold font-bold uppercase text-sm mb-2">01. Posicionamento à Distância</h4>
+                            <p class="text-zinc-400 font-light">Dominamos as redes com micro-segmentação. O candidato fala diretamente com a dor de cada bairro, sem precisar estar lá fisicamente todos os dias.</p>
+                        </div>
+                        <div class="glass p-8 rounded-3xl border-l-4 border-brand-gold">
+                            <h4 class="text-brand-gold font-bold uppercase text-sm mb-2">02. Reforço Presencial</h4>
+                            <p class="text-zinc-400 font-light">Treinamento de oratória, postura e produção audiovisual de campo para que cada visita ao povo se torne um conteúdo viral de alta conversão.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rounded-[3rem] overflow-hidden shadow-2xl border border-white/10 group">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2959443?q=80&w=800" alt="Candidato com o povo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000">
+                </div>
+            </div>
+        </section>
+
+        <section id="reputacao" class="py-24 bg-brand-charcoal px-6">
+            <div class="max-w-7xl mx-auto text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6 italic">Blindagem de <span class="text-brand-gold">Reputação</span></h2>
+                <p class="text-zinc-400 max-w-3xl mx-auto text-lg font-light">Ajustamos os meios de comunicação para que sua mensagem não seja apenas ouvida, mas sentida. Criamos autoridade através de provas sociais e resultados metrificáveis.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div class="relative group overflow-hidden rounded-3xl h-96 border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-8 flex flex-col justify-end">
+                        <h5 class="text-white font-bold text-xl uppercase italic">Conexão Humana</h5>
+                        <p class="text-brand-gold text-xs uppercase tracking-widest mt-2">Humanização do Candidato</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-3xl h-96 border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-8 flex flex-col justify-end">
+                        <h5 class="text-white font-bold text-xl uppercase italic">Liderança de Massa</h5>
+                        <p class="text-brand-gold text-xs uppercase tracking-widest mt-2">Poder e Influência</p>
+                    </div>
+                </div>
+                <div class="relative group overflow-hidden rounded-3xl h-96 border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74dea327912?q=80&w=600" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent p-8 flex flex-col justify-end">
+                        <h5 class="text-white font-bold text-xl uppercase italic">Voz da Mudança</h5>
+                        <p class="text-brand-gold text-xs uppercase tracking-widest mt-2">Domínio de Palanque</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 text-center bg-brand-dark px-6 border-t border-white/5">
+            <h2 class="text-4xl md:text-6xl font-black uppercase mb-8 italic">Sua Campanha merece <br><span class="text-brand-gold italic">Inteligência VNCx.</span></h2>
+            <p class="text-zinc-500 max-w-2xl mx-auto mb-12 font-light">Não deixe seu futuro político ao acaso. Utilize métodos validados por quem entende de tecnologia e comportamento humano.</p>
+            <a href="https://w.app/agenciavncx" class="bg-brand-gold text-black px-12 py-5 rounded-full font-black uppercase italic tracking-[0.2em] hover:bg-white transition-all shadow-[0_0_30px_rgba(197,160,89,0.3)]">
+                Falar com Gustavo Santos
+            </a>
+        </section>
+    </main>
+
+    <footer class="p-12 text-center text-zinc-700 text-[10px] uppercase tracking-[0.5em]">
+        VNCx &copy; 2026 - Onde a Tecnologia encontra o Poder.
+    </footer>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            menu.classList.toggle('open');
+            // Animação dos traços para X
+            btn.children[0].classList.toggle('rotate-45');
+            btn.children[0].classList.toggle('translate-y-2');
+            btn.children[1].classList.toggle('opacity-0');
+            btn.children[2].classList.toggle('-rotate-45');
+            btn.children[2].classList.toggle('-translate-y-2');
+            
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
+        }
+
+        btn.addEventListener('click', toggleMenu);
+        links.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+
+</body>
+</html>

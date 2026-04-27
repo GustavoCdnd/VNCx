@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNCx | Marketing Político & Tecnologia</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/output.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#C5A059',
+                            dark: '#050505',
+                            charcoal: '#0d0d0d',
+                        }
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #f4f4f5; }
+        
+        .glass { 
+            background: rgba(0, 0, 0, 0.7); 
+            backdrop-filter: blur(15px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+        }
+
+        /* Efeito de Empilhamento (Sticky Stack) */
+        .work-card {
+            position: sticky;
+            top: 12vh;
+            transition: transform 0.5s ease;
+        }
+
+        /* Animação para o menu mobile */
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            opacity: 0;
+            visibility: hidden;
+        }
+        #mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Efeito de toque no Mobile */
+        .mobile-link {
+            transition: all 0.3s ease;
+        }
+        .mobile-link:active {
+            color: #C5A059;
+            text-shadow: 0 0 15px rgba(197, 160, 89, 0.8);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-[100] p-6 flex justify-between items-center glass">
+        <div class="text-2xl font-black tracking-tighter uppercase italic z-[110]">
+            <img class="w-20" src="LOGO VNCX nome.png" alt="">
+        </div>
+
+        <nav class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <a href="index.html" class="hover:text-brand-gold transition-colors">Início</a>
+            <a href="publicidade.html" class="hover:text-brand-gold transition-colors">Publicidade</a>
+            <a href="trafegopago.html" class="hover:text-brand-gold transition-colors">Tráfego Pago</a>
+            <a href="https://w.app/agenciavncx" class="hover:text-brand-gold transition-colors">Suporte</a>
+            <a href="https://w.app/agenciavncx" class="text-brand-gold border border-brand-gold px-4 py-1 rounded-full hover:bg-brand-gold hover:text-black transition-all">Contrate</a>
+        </nav>
+
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 z-[110] outline-none">
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+        </button>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black/95 z-[105] flex flex-col items-center justify-center md:hidden">
+        <nav class="flex flex-col items-center gap-10 text-2xl uppercase tracking-[0.5em] font-light">
+            <a href="#home" class="mobile-link">Início</a>
+            <a href="#work" class="mobile-link">Portfólio</a>
+            <a href="#founder" class="mobile-link">Fundador</a>
+            <a href="#" class="mobile-link">Suporte</a>
+            <a href="#" class="mt-4 px-10 py-4 bg-gradient-to-r from-brand-gold to-yellow-200 text-black font-black rounded-full shadow-[0_0_20px_rgba(197,160,89,0.4)] active:scale-90 transition-transform uppercase italic tracking-widest text-sm">
+                CONTRATE AGORA
+            </a>
+        </nav>
+    </div>
+
+    <main>
+        
+        <section id="home" class="relative h-screen flex flex-col justify-center items-center overflow-hidden">
+            <video autoplay loop muted playsinline class="absolute z-0 w-auto min-w-full min-h-full max-w-none opacity-30 scale-105">
+                <source src="https://videos.pexels.com/video-files/3129957/3129957-hd_1920_1080_25fps.mp4" type="video/mp4">
+            </video>
+            
+            <div class="relative z-10 text-center px-6">
+                <img src="./LOGO VNCX nome.png" alt="VNCx" class="w-full md:w-40 mx-auto mb-10 drop-shadow-[0_0_20px_rgba(197,160,89,0.3)]">
+                <h1 class="text-4xl md:text-8xl font-black tracking-tighter leading-none uppercase italic mb-6">
+                    A Engrenagem da <br>
+                    <span class="text-brand-gold not-italic font-light">Vitória Digital</span>
+                </h1>
+                <p class="text-zinc-400 text-xs md:text-lg tracking-[0.4em] uppercase font-light max-w-3xl mx-auto">
+                    Inteligência • Estratégia • Performance
+                </p>
+            </div>
+        </section>
+
+        <section id="work" class="relative py-24 bg-brand-charcoal px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="mb-24 text-center md:text-left">
+                    <h2 class="text-6xl md:text-[10rem] font-black uppercase tracking-tighter opacity-5 leading-none">Soluções</h2>
+                    <h3 class="text-3xl md:text-6xl font-bold -mt-8 md:-mt-16 relative z-10 text-brand-gold italic">Nossas Especialidades</h3>
+                </div>
+
+                <div class="space-y-[30vh] pb-[20vh]">
+                    <div class="work-card glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row h-[65vh] md:h-[75vh] shadow-2xl border border-white/10">
+                        <div class="md:w-3/5 h-1/2 md:h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1000');"></div>
+                        <div class="p-8 md:p-16 md:w-2/5 flex flex-col justify-center">
+                            <span class="text-brand-gold font-black uppercase tracking-[0.3em] text-[10px] mb-4">Saiba mais sobre</span>
+                            <h4 class="text-3xl md:text-5xl font-black mb-6 uppercase leading-none italic">Marketing <br>Político</h4>
+                            <p class="text-zinc-400 font-light mb-8 text-sm md:text-base leading-relaxed">Construção de imagem, gestão de crise e narrativas de poder. Transformamos propostas em movimentos populares através do design e estratégia.</p>
+                            <a href="marketingpolitico.html" class="text-xs font-bold tracking-widest uppercase border-b border-brand-gold pb-1 w-fit hover:text-brand-gold transition-all">Ver Projetos</a>
+                        </div>
+                    </div>
+
+                    <div class="work-card glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row-reverse h-[65vh] md:h-[75vh] shadow-2xl border border-white/10">
+                        <div class="md:w-3/5 h-1/2 md:h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000');"></div>
+                        <div class="p-8 md:p-16 md:w-2/5 flex flex-col justify-center text-right">
+                            <span class="text-brand-gold font-black uppercase tracking-[0.3em] text-[10px] mb-4">Saiba mais sobre</span>
+                            <h4 class="text-3xl md:text-5xl font-black mb-6 uppercase leading-none italic">Tráfego <br>Pago</h4>
+                            <p class="text-zinc-400 font-light mb-8 text-sm md:text-base leading-relaxed">Engenharia de anúncios. Alcançamos o eleitor certo, no momento certo, com a mensagem exata. Precisão cirúrgica em cada clique investido.</p>
+                            <a href="trafegopago.html" class="text-xs font-bold tracking-widest uppercase border-b border-brand-gold pb-1 w-fit ml-auto hover:text-brand-gold transition-all">Ver Performance</a>
+                        </div>
+                    </div>
+
+                    <div class="work-card glass rounded-[3rem] overflow-hidden flex flex-col md:flex-row h-[65vh] md:h-[75vh] shadow-2xl border border-white/10">
+                        <div class="md:w-3/5 h-1/2 md:h-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000');"></div>
+                        <div class="p-8 md:p-16 md:w-2/5 flex flex-col justify-center">
+                            <span class="text-brand-gold font-black uppercase tracking-[0.3em] text-[10px] mb-4">Saiba mais sobre</span>
+                            <h4 class="text-3xl md:text-5xl font-black mb-6 uppercase leading-none italic">Publicidade <br>Orientada</h4>
+                            <p class="text-zinc-400 font-light mb-8 text-sm md:text-base leading-relaxed">Comunicação baseada em inteligência de dados. Criamos campanhas que resolvem problemas reais e entregam resultados metrificáveis.</p>
+                            <a href="publicidade.html" class="text-xs font-bold tracking-widest uppercase border-b border-brand-gold pb-1 w-fit hover:text-brand-gold transition-all">Ver Estratégia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-brand-dark overflow-hidden relative border-y border-white/5">
+            <div class="flex animate-infinite-scroll whitespace-nowrap items-center">
+                <div class="flex items-center gap-24 md:gap-40 px-12 grayscale opacity-20 text-2xl md:text-5xl font-black italic">
+                    <span>Design</span><span>Tráfego Pago</span><span>Filmes</span><span>Publicidade</span><span>Posicionamento</span>
+                </div>
+                <div class="flex items-center gap-24 md:gap-40 px-12 grayscale opacity-20 text-2xl md:text-5xl font-black italic">
+                    <span>Design</span><span>Tráfego Pago</span><span>Filmes</span><span>Publicidade</span><span>Posicionamento</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="founder" class="py-32 bg-brand-dark px-6">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+                <div class="w-64 h-64 md:w-[450px] md:h-[450px] bg-zinc-900 rounded-[3rem] overflow-hidden border border-white/10 relative group shadow-2xl">
+                    <img src="IMG_0788.PNG" alt="Lucas Gustavo" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                        <p class="text-brand-gold font-black text-xl italic uppercase tracking-tighter">Gustavo Santos</p>
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Fundador</p>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <h2 class="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-6 italic">Marketing <span class="text-brand-gold">vitorioso</span></h2>
+                    <p class="text-zinc-400 text-lg font-light leading-relaxed mb-8 max-w-2xl">
+                        Fundador da <strong class="text-white">VNCx</strong>, a agência tem como objetivo ser a extensão da sua empresa, criando reputação sólida e com objetivos claros de crescimento e aumentando a qualidade dos produtos e serviços.
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="border-l border-brand-gold pl-4 text-left">
+                            <span class="block text-white font-black text-xl">2022</span>
+                            <span class="text-[9px] uppercase tracking-widest text-zinc-500">Fundado em 2022 <br> Rebranding em 2026</span>
+                        </div>
+                        <div class="border-l border-brand-gold pl-4 text-left">
+                            <span class="block text-white font-black text-xl">Formação</span>
+                            <span class="text-[9px] uppercase tracking-widest text-zinc-500">Design Gráfico <br> Publicidade e Propaganda <br> Marketing Digital <br>Subido Pro</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-12 border-t border-white/5 text-center text-white  text-[10px] uppercase tracking-[0.5em] bg-brand-dark">
+        VNCx &copy; 2026 - Todos os direitos reservados
+    </footer>
+
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const links = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            menu.classList.toggle('open');
+            btn.children[0].classList.toggle('rotate-45');
+            btn.children[0].classList.toggle('translate-y-2');
+            btn.children[1].classList.toggle('opacity-0');
+            btn.children[2].classList.toggle('-rotate-45');
+            btn.children[2].classList.toggle('-translate-y-2');
+            
+            // Impede o scroll quando menu está aberto
+            document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
+        }
+
+        btn.addEventListener('click', toggleMenu);
+        links.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+
+</body>
+</html>

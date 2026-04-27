@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tráfego Pago & Performance | VNCx</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="src/output.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 
+                            blue: '#00D1FF', 
+                            deep: '#00121A', 
+                            glow: 'rgba(0, 209, 255, 0.3)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #00080B; color: #E2E8F0; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-blue { background: rgba(0, 18, 26, 0.8); backdrop-filter: blur(15px); border: 1px solid rgba(0, 209, 255, 0.1); }
+        
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00D1FF, transparent);
+            position: absolute;
+            animation: scan 4s linear infinite;
+            z-index: 5;
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        #mobile-menu {
+            transition: all 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+            opacity: 0;
+            visibility: hidden;
+        }
+        #mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <header class="fixed top-0 w-full z-[100] p-6 flex justify-between items-center glass-blue">
+        <div class="text-2xl font-black tracking-tighter uppercase italic z-[110]">
+            VNC<span class="text-brand-blue font-light not-italic">x</span>
+        </div>
+        <nav class="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold">
+            <a href="index.html" class="hover:text-brand-blue transition-colors">HOME</a>
+            <a href="publicidade.html" class="hover:text-brand-blue transition-colors">Publicidade</a>
+            <a href="marketingpolitico.html" class="hover:text-brand-blue transition-colors">Política</a>
+            <a href="https://w.app/agenciavncx" class="text-brand-blue border border-brand-blue px-4 py-1 rounded-full hover:bg-brand-blue hover:text-black transition-all">Contrate</a>
+        </nav>
+        <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 z-[110]">
+            <span class="w-7 h-0.5 bg-brand-blue transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-brand-blue transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-brand-blue transition-all duration-300"></span>
+        </button>
+    </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-brand-deep/95 z-[105] flex flex-col items-center justify-center md:hidden">
+        <nav class="flex flex-col items-center gap-10 text-2xl uppercase tracking-[0.4em] font-light italic">
+            <a href="index.html" class="mobile-link">Início</a>
+            <a href="#metricas" class="mobile-link">Métricas</a>
+            <a href="#ads" class="mobile-link">Plataformas</a>
+            <a href="#" class="text-brand-blue font-bold">Escalar ROI</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="relative h-[85vh] flex flex-col justify-center items-center overflow-hidden px-6">
+            <div class="scanline"></div>
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#00D1FF 1px, transparent 1px); background-size: 30px 30px;"></div>
+            
+            <div class="relative z-10 text-center">
+                <span class="mono text-brand-blue text-xs tracking-widest mb-4 block uppercase font-bold animate-pulse">[ otimize suas campanhas]</span>
+                <h1 class="text-6xl md:text-9xl font-black uppercase italic tracking-tighter leading-none mb-6">
+                    Tráfego <br><span class="text-brand-blue">Cirúrgico</span>
+                </h1>
+                <p class="text-zinc-400 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+                    Campanhas otimizadas para ROAS máximo, segmentação precisa e escalabilidade controlada. Transforme cada clique em lucro real.
+                </p>
+            </div>
+        </section>
+
+        <section id="metricas" class="py-24 px-6 bg-brand-deep border-y border-brand-blue/10">
+            <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+                
+                <div class="glass-blue p-8 rounded-2xl text-center">
+                    <span class="text-brand-blue text-4xl md:text-5xl font-black mono mb-2 block">
+                        +<span class="counter" data-target="20">0</span>
+                    </span>
+                    <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Média de ROAS</p>
+                </div>
+
+                <div class="glass-blue p-8 rounded-2xl text-center">
+                    <span class="text-brand-blue text-4xl md:text-5xl font-black mono mb-2 block">
+                        -<span class="counter" data-target="30">0</span>%
+                    </span>
+                    <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Redução de CPA</p>
+                </div>
+
+                <div class="glass-blue p-8 rounded-2xl text-center">
+                    <span class="text-brand-blue text-4xl md:text-5xl font-black mono mb-2 block">
+                        <span class="counter" data-target="350">0</span>k
+                    </span>
+                    <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Alcance Mensal</p>
+                </div>
+
+                <div class="glass-blue p-8 rounded-2xl text-center border-l-2 border-brand-blue">
+                    <span class="text-brand-blue text-4xl md:text-5xl font-black mono mb-2 block tracking-tighter uppercase">Escala</span>
+                    <p class="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">Gradual e controlável</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="ads" class="py-24 px-6 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="md:w-1/2">
+                    <h2 class="text-5xl md:text-7xl font-black uppercase italic leading-none mb-8">Onde o <br><span class="text-brand-blue">Público Está.</span></h2>
+                    <ul class="space-y-6 text-zinc-400 font-light">
+                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-brand-blue shadow-[0_0_10px_#00D1FF] rounded-full"></span> <strong>Meta Ads:</strong> Facebook e Instagram para conversão visual.</li>
+                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-brand-blue shadow-[0_0_10px_#00D1FF] rounded-full"></span> <strong>Google Ads:</strong> Intencionalidade máxima de busca.</li>
+                        <li class="flex items-center gap-4"><span class="w-2 h-2 bg-brand-blue shadow-[0_0_10px_#00D1FF] rounded-full"></span> <strong>TikTok Ads:</strong> Viralização para o público dinâmico.</li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600" class="rounded-3xl border border-brand-blue/30">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600" class="rounded-3xl mt-12 border border-brand-blue/30 shadow-[0_0_30px_rgba(0,209,255,0.1)]">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-brand-deep text-center px-6 relative overflow-hidden border-t border-brand-blue/10">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-blue opacity-5 blur-[150px] rounded-full"></div>
+            <div class="relative z-10">
+                <h2 class="text-4xl md:text-6xl font-black uppercase mb-8 italic leading-tight">Pronto para <br><span class="text-brand-blue uppercase not-italic">Escalar seus produtos?</span></h2>
+                <a href="https://w.app/agenciavncx" class="bg-brand-blue text-black px-12 py-5 rounded-full font-black uppercase italic tracking-[0.2em] hover:bg-white transition-all shadow-[0_0_30px_rgba(0,209,255,0.4)]">
+                    Solicite seu orçamento
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="p-12 text-center text-white text-[10px] uppercase tracking-[0.5em] mono border-t border-white/5">
+        VNCx // AGÊNCIA DE MARKETING // 2026
+    </footer>
+
+    <script>
+        // MENU MOBILE
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+            btn.children[0].classList.toggle('rotate-45');
+            btn.children[0].classList.toggle('translate-y-2');
+            btn.children[1].classList.toggle('opacity-0');
+            btn.children[2].classList.toggle('-rotate-45');
+            btn.children[2].classList.toggle('-translate-y-2');
+        });
+
+        // COUNT UP LOGIC
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // Quanto maior, mais lento
+
+        const startCounter = (el) => {
+            const target = +el.getAttribute('data-target');
+            const count = +el.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                el.innerText = Math.ceil(count + inc);
+                setTimeout(() => startCounter(el), 20);
+            } else {
+                el.innerText = target;
+            }
+        };
+
+        // INTERSECTION OBSERVER (Gatilho ao rolar)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => observer.observe(counter));
+    </script>
+</body>
+</html>
