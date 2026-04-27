@@ -6,14 +6,13 @@
     <title>Publicidade Orientada | VNCx Creative Studio</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="src/output.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: { 
-                            crimson: '#991B1B', // Vermelho elegante
+                            crimson: '#991B1B',
                             light: '#F8F8F8',
                             dark: '#0A0A0A',
                             charcoal: '#111111',
@@ -48,10 +47,11 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
         }
 
-        /* ----- FLIP CARD: SOLUÇÃO DEFINITIVA ----- */
+        /* ----- FLIP CARD ENGINE ----- */
         .flip-card {
-            perspective: 1000px; /* Cria a profundidade 3D */
+            perspective: 1000px;
             background-color: transparent;
+            cursor: pointer;
         }
 
         .flip-card-inner {
@@ -59,13 +59,13 @@
             width: 100%;
             height: 100%;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d; /* CRÍTICO: Mantém frente e verso no mesmo espaço */
+            transform-style: preserve-3d;
         }
 
-        /* Aplica o flip no hover do desktop E no active do mobile */
+        /* Virada no Hover (Desktop) e na Classe (Mobile via JS) */
         .flip-card:hover .flip-card-inner,
-        .flip-card:active .flip-card-inner {
-            transform: rotateY(180deg); /* Vira o card em seu próprio eixo vertical */
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
         }
 
         .flip-card-front, .flip-card-back {
@@ -74,8 +74,8 @@
             height: 100%;
             top: 0;
             left: 0;
-            -webkit-backface-visibility: hidden; /* Safari */
-            backface-visibility: hidden; /* CRÍTICO: Esconde o verso quando está de costas */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
             border-radius: 1.5rem;
             overflow: hidden;
             display: flex;
@@ -86,53 +86,53 @@
 
         .flip-card-front {
             background-color: #0F0F0F;
-            z-index: 2; /* Começa na frente */
+            z-index: 2;
         }
 
         .flip-card-back {
-            transform: rotateY(180deg); /* Pré-rotaciona o verso */
+            transform: rotateY(180deg);
             background-color: #111111;
-            border: 1px solid rgba(153, 27, 27, 0.2);
-            z-index: 1; /* Começa atrás */
+            border: 1px solid rgba(153, 27, 27, 0.3);
+            z-index: 1;
         }
-        /* ------------------------------------------- */
 
-        /* Animações de entrada SUAVES (Fade In) - Removi o deslize UP */
+        /* Animações de entrada */
         .reveal { opacity: 0; transition: all 1.2s ease-out; }
         .reveal.active { opacity: 1; }
 
+        /* Esconder scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden pt-24 no-scrollbar::-webkit-scrollbar { display: none; }">
+<body class="antialiased overflow-x-hidden pt-24">
 
     <header class="fixed top-0 w-full z-[100] p-6 flex justify-between items-center glass border-b border-white/5">
         <div class="text-2xl font-black tracking-tighter uppercase italic serif z-[110]">
-            <img class="w-20" src="LOGO VNCX nome.png" alt="">
+            <img class="w-20" src="LOGO VNCX nome.png" alt="VNCx">
         </div>
-        <nav class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.4em] font-bold roboto">
-            <a href="index.html" class="hover:text-brand-crimson transition-colors mobile-link text-white" >HOME</a>
-            <a href="marketingpolitico.html" class="hover:text-brand-crimson transition-colors mobile-link text-white">política</a>
-            <a href="trafegopago.html" class="hover:text-brand-crimson transition-colors mobile-link text-white">tráfego pago</a>
-            <a href="https://w.app/agenciavncx" class="text-brand-crimson border border-brand-crimson px-5 py-1.5 rounded-full hover:bg-brand-crimson hover:text-white transition-all text-[9px] mobile-link shadow-brand-crimson/10 shadow-lg">CONTRATE </a>
+        <nav class="hidden md:flex gap-10 text-[10px] uppercase tracking-[0.4em] font-bold">
+            <a href="index.html" class="hover:text-brand-crimson transition-colors text-white">HOME</a>
+            <a href="marketingpolitico.html" class="hover:text-brand-crimson transition-colors text-white">POLÍTICA</a>
+            <a href="trafegopago.html" class="hover:text-brand-crimson transition-colors text-white">TRÁFEGO PAGO</a>
+            <a href="https://w.app/agenciavncx" target="_blank" class="text-brand-crimson border border-brand-crimson px-5 py-1.5 rounded-full hover:bg-brand-crimson hover:text-white transition-all text-[9px] shadow-brand-crimson/10 shadow-lg">CONTRATE</a>
         </nav>
         <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 z-[110] outline-none">
-            <span class="w-7 h-0.5 bg-white text-white transition-all duration-300"></span>
-            <span class="w-7 h-0.5 bg-white text-white transition-all duration-300"></span>
-            <span class="w-7 h-0.5 bg-white text-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
+            <span class="w-7 h-0.5 bg-white transition-all duration-300"></span>
         </button>
     </header>
 
-    <div id="mobile-menu" class=" fixed top-0 left-0 w-full h-screen bg-black/95 z-[105] flex flex-col items-center justify-center opacity-0 invisible transition-all duration-500 md:hidden overflow-hidden">
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-black/95 z-[105] flex flex-col items-center justify-center opacity-0 invisible transition-all duration-500 md:hidden">
         <nav class="flex flex-col items-center gap-10 text-2xl uppercase tracking-[0.5em] font-light serif italic">
-            <a href="index.html" class="mobile-link active:text-brand-crimson active:scale-110">HOME</a>
-            <a href="marketingpolitico.html" class="mobile-link active:text-brand-crimson active:scale-110">Política</a>
-            <a href="trafegopago.html" class="mobile-link active:text-brand-crimson active:scale-110">tráfego pago</a>
-            <a href="https://w.app/agenciavncx" class="text-brand-blue border border-brand-blue px-4 py-1 rounded-full hover:bg-brand-blue hover:text-black transition-all">Contrate</a>
+            <a href="index.html" class="mobile-link active:text-brand-crimson">HOME</a>
+            <a href="marketingpolitico.html" class="mobile-link active:text-brand-crimson">POLÍTICA</a>
+            <a href="trafegopago.html" class="mobile-link active:text-brand-crimson">TRÁFEGO PAGO</a>
+            <a href="https://w.app/agenciavncx" class="text-brand-crimson border border-brand-crimson px-6 py-2 rounded-full text-sm not-italic font-bold">CONTRATE</a>
         </nav>
     </div>
 
     <main>
-        
         <section id="home" class="relative h-[90vh] flex flex-col justify-center items-center px-6 text-center overflow-hidden">
             <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600')] bg-cover bg-center grayscale opacity-0" id="hero-bg" style="transition: opacity 1.5s ease-out;"></div>
             
@@ -142,10 +142,10 @@
                     Publicidade <br><span class="text-brand-crimson not-serif font-black tracking-tighter">Orientada</span>
                 </h1>
                 <p class="text-zinc-500 text-base md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
-                    Não criamos apenas anúncios. Construímos repertório profissional e identidades visuais que dão alma ao seu negócio.
+                    Construímos identidades visuais que dão alma ao seu negócio e geram repertório profissional inabalável.
                 </p>
                 <div class="pt-8">
-                    <a href="#processo" class="text-xs font-bold tracking-widest uppercase border-b border-brand-crimson pb-1.5 hover:text-brand-crimson transition-all animate-float">Descubra o Processo</a>
+                    <a href="#processo" class="text-xs font-bold tracking-widest uppercase border-b border-brand-crimson pb-1.5 hover:text-brand-crimson transition-all animate-float inline-block">Descubra o Processo</a>
                 </div>
             </div>
         </section>
@@ -153,157 +153,131 @@
         <section id="processo" class="py-28 px-6 bg-brand-charcoal relative">
             <div class="max-w-7xl mx-auto">
                 <div class="mb-20 text-center md:text-left reveal">
-                    <h2 class="serif text-5xl md:text-8xl font-bold italic mb-4 leading-none">O DNA da <br><span class="text-brand-crimson not-serif font-black tracking-tighter not-italic">Criação</span></h2>
-                    <p class="text-zinc-500 text-sm md:text-lg tracking-widest uppercase font-light">Briefing • Alinhamento • Insights • Identidade</p>
+                    <h2 class="serif text-5xl md:text-8xl font-bold italic mb-4 leading-none">O DNA da <br><span class="text-brand-crimson not-serif font-black tracking-tighter not-italic text-6xl md:text-8xl">Criação</span></h2>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    
-                    <div class="flip-card h-96 md:h-[450px] reveal" style="transition-delay: 0.2s;">
+                    <div class="flip-card h-96 md:h-[450px] reveal" onclick="this.classList.toggle('is-flipped')">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/50 p-8 flex flex-col justify-end">
-                                    <span class="text-brand-crimson serif text-4xl italic block mb-2 opacity-70">01</span>
-                                    <h4 class="text-2xl font-black uppercase tracking-tighter leading-none text-white">briefing</h4>
+                                    <span class="text-brand-crimson serif text-4xl italic block mb-2">01</span>
+                                    <h4 class="text-2xl font-black uppercase tracking-tighter text-white">BRIEFING</h4>
                                 </div>
                             </div>
                             <div class="flip-card-back">
-                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-brand-crimson text-center px-4">conhecimento</h4>
-                                <p class="text-zinc-400 font-light text-center leading-relaxed text-sm px-6">Entramos na mente do cliente. Entendemos sua história, seus valores e para quem ele deseja falar. Sem conexão, não há criação.</p>
+                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-brand-crimson">IMERSÃO</h4>
+                                <p class="text-zinc-400 font-light text-center text-sm px-6">Entramos na mente do cliente para entender sua história e valores. Sem conexão, não há criação.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flip-card h-96 md:h-[450px] reveal" style="transition-delay: 0.4s;">
+                    <div class="flip-card h-96 md:h-[450px] reveal" onclick="this.classList.toggle('is-flipped')" style="transition-delay: 0.2s;">
                         <div class="flip-card-inner">
                             <div class="flip-card-front border-t-2 border-brand-crimson">
                                 <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/50 p-8 flex flex-col justify-end">
-                                    <span class="text-brand-gold serif text-4xl italic block mb-2 opacity-70 text-brand-gold">02</span>
-                                    <h4 class="text-2xl font-black uppercase tracking-tighter leading-none text-white">alinhamento</h4>
+                                    <span class="text-brand-crimson serif text-4xl italic block mb-2">02</span>
+                                    <h4 class="text-2xl font-black uppercase tracking-tighter text-white">ALINHAMENTO</h4>
                                 </div>
                             </div>
-                            <div class="flip-card-back border-l border-brand-gold/30">
-                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-brand-gold text-center px-4">estratégia</h4>
-                                <p class="text-zinc-400 font-light text-center leading-relaxed text-sm px-6">Cruzamos o desejo do cliente com as tendências de mercado. Onde os outros veem dados, nós extraímos faíscas criativas.</p>
+                            <div class="flip-card-back">
+                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-white">INSIGHTS</h4>
+                                <p class="text-zinc-400 font-light text-center text-sm px-6">Cruzamos seus desejos com tendências de mercado para extrair faíscas criativas únicas.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="flip-card h-96 md:h-[450px] reveal" style="transition-delay: 0.6s;">
+                    <div class="flip-card h-96 md:h-[450px] reveal" onclick="this.classList.toggle('is-flipped')" style="transition-delay: 0.4s;">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
                                 <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=800" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-black/50 p-8 flex flex-col justify-end">
-                                    <span class="text-brand-crimson serif text-4xl italic block mb-2 opacity-70">03</span>
-                                    <h4 class="text-2xl font-black uppercase tracking-tighter leading-none text-white">execução</h4>
+                                    <span class="text-brand-crimson serif text-4xl italic block mb-2">03</span>
+                                    <h4 class="text-2xl font-black uppercase tracking-tighter text-white">EXECUÇÃO</h4>
                                 </div>
                             </div>
                             <div class="flip-card-back">
-                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-brand-crimson text-center px-4">identidade</h4>
-                                <p class="text-zinc-400 font-light text-center leading-relaxed text-sm px-6">A execução final. Onde CorelDraw e Photoshop se tornam armas para construir um repertório profissional inabalável.</p>
+                                <h4 class="text-xl font-bold uppercase tracking-widest mb-6 text-brand-crimson">IDENTIDADE</h4>
+                                <p class="text-zinc-400 font-light text-center text-sm px-6">A materialização técnica através de CorelDraw e Photoshop em um repertório inabalável.</p>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
         <section id="branding" class="py-32 px-6">
             <div class="max-w-7xl mx-auto text-center mb-24 reveal">
-                <h3 class="serif text-5xl md:text-7xl font-bold italic mb-4 leading-none">Visual <span class="text-brand-crimson not-serif font-black tracking-tighter not-italic">Impact</span></h3>
-                <p class="text-zinc-500 tracking-[0.4em] uppercase text-xs font-light">Mockups • Logos • Branding Systems</p>
+                <h3 class="serif text-5xl md:text-7xl font-bold italic mb-4">Visual <span class="text-brand-crimson not-serif">Impact</span></h3>
+                <p class="text-zinc-500 tracking-[0.4em] uppercase text-xs">Branding Systems • Editorial • Luxury</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto">
-                
-                <div class="space-y-6 reveal" style="transition-delay: 0.2s;">
-                    <div class="h-96 md:h-[450px] overflow-hidden rounded-3xl border border-white/5 bg-zinc-900 group">
-                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000">
-                    </div>
-                    <h5 class="serif text-xl md:text-2xl font-bold italic text-zinc-100 px-2">Minimalismo Corporativo</h5>
+                <div class="reveal">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=600" class="rounded-3xl grayscale hover:grayscale-0 transition duration-1000 w-full h-[450px] object-cover">
+                    <h5 class="serif text-xl mt-6 italic">Minimalismo Corporativo</h5>
                 </div>
-                
-                <div class="space-y-6 mt-12 md:mt-24 reveal" style="transition-delay: 0.4s;">
-                    <div class="h-96 md:h-[450px] overflow-hidden rounded-3xl border border-white/5 bg-zinc-900 group">
-                        <img src="Logos and branding by Togue Studio ✨.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000">
-                    </div>
-                    <h5 class="serif text-xl md:text-2xl font-bold italic text-zinc-100 px-2">Sistemas Visuais Complexos</h5>
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <img src="Social Media - Loja de Móveis.jpg" class="rounded-3xl grayscale hover:grayscale-0 transition duration-1000 w-full h-[450px] object-cover md:mt-12">
+                    <h5 class="serif text-xl mt-6 italic">Identidade Visual</h5>
                 </div>
-                
-                <div class="space-y-6 reveal" style="transition-delay: 0.6s;">
-                    <div class="h-96 md:h-[450px] overflow-hidden rounded-3xl border border-white/5 bg-zinc-900 group">
-                        <img src="Social Media - Loja de Móveis.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-1000">
-                    </div>
-                    <h5 class="serif text-xl md:text-2xl font-bold italic text-zinc-100 px-2">Editorial de Luxo</h5>
+                <div class="reveal" style="transition-delay: 0.4s;">
+                    <img src="Logos and branding by Togue Studio ✨.jpg" class="rounded-3xl grayscale hover:grayscale-0 transition duration-1000 w-full h-[450px] object-cover">
+                    <h5 class="serif text-xl mt-6 italic">Editorial de Luxo</h5>
                 </div>
-
             </div>
         </section>
 
         <section class="py-40 bg-zinc-950 text-center px-6 border-t border-white/5">
             <div class="max-w-4xl mx-auto reveal">
-                <h2 class="serif text-4xl md:text-8xl font-bold italic mb-10 leading-tight">Sua visão, nossa <br><span class="text-brand-crimson">assinatura.</span></h2>
-                <a href="#" class="inline-block border-b-2 border-brand-crimson text-brand-crimson serif text-2xl md:text-3xl font-bold italic pb-2 hover:text-white hover:border-white transition-all duration-500 active:scale-90 shadow-brand-crimson/10 shadow-lg">
-                    Inicie seu projeto agora
-                </a>
+                <h2 class="serif text-4xl md:text-8xl font-bold italic mb-10 leading-tight italic">Sua visão, nossa <br><span class="text-brand-crimson">assinatura.</span></h2>
+                <a href="https://w.app/agenciavncx" class="inline-block border-b-2 border-brand-crimson text-brand-crimson serif text-2xl md:text-3xl font-bold italic pb-2 hover:text-white hover:border-white transition-all">Iniciar meu projeto</a>
             </div>
         </section>
-
     </main>
 
-    <footer class="p-12 border-t border-white/5 text-center text-white text-[10px] uppercase tracking-[0.4em] roboto bg-brand-dark">
-        VNCx // Agência criativa // 2026
+    <footer class="p-12 border-t border-white/5 text-center text-zinc-500 text-[10px] uppercase tracking-[0.4em] bg-brand-dark">
+        VNCx // CREATIVE_STUDIO // 2026
     </footer>
 
     <script>
-        // Menu Mobile (Mantido)
+        // Menu Mobile Logic
         const btn = document.getElementById('menu-btn');
         const menu = document.getElementById('mobile-menu');
-        const headerLines = btn.querySelectorAll('span');
-        const links = document.querySelectorAll('.mobile-link');
+        const lines = btn.querySelectorAll('span');
 
-        function toggleMenu() {
+        btn.addEventListener('click', () => {
             menu.classList.toggle('open');
             menu.classList.toggle('opacity-0');
             menu.classList.toggle('invisible');
-            headerLines[0].classList.toggle('rotate-45');
-            headerLines[0].classList.toggle('translate-y-2');
-            headerLines[1].classList.toggle('opacity-0');
-            headerLines[2].classList.toggle('-rotate-45');
-            headerLines[2].classList.toggle('-translate-y-2');
+            lines[0].classList.toggle('rotate-45');
+            lines[0].classList.toggle('translate-y-2');
+            lines[1].classList.toggle('opacity-0');
+            lines[2].classList.toggle('-rotate-45');
+            lines[2].classList.toggle('-translate-y-2');
             document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : 'auto';
-        }
-
-        btn.addEventListener('click', toggleMenu);
-        links.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // Fade In do Background do Hero (Suavidade na entrada)
-        window.addEventListener('load', () => {
-            const heroBg = document.getElementById('hero-bg');
-            setTimeout(() => {
-                heroBg.style.opacity = '0.3';
-            }, 500);
         });
 
-        // Suavizar a animação ao rolar a página (Fade In Puro)
-        function revealOnScroll() {
+        // Hero Reveal
+        window.addEventListener('load', () => {
+            document.getElementById('hero-bg').style.opacity = '0.2';
+        });
+
+        // Scroll Reveal
+        function reveal() {
             const reveals = document.querySelectorAll('.reveal');
-            const windowHeight = window.innerHeight;
             reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
                 const elementTop = el.getBoundingClientRect().top;
-                // Ativa 150px antes de entrar na tela
-                if (elementTop < windowHeight - 150) {
+                if (elementTop < windowHeight - 100) {
                     el.classList.add('active');
                 }
             });
         }
-        window.addEventListener('scroll', revealOnScroll);
-        // Ativar para elementos já na tela ao carregar
-        revealOnScroll();
+        window.addEventListener('scroll', reveal);
+        reveal();
     </script>
-
 </body>
 </html>
