@@ -1,54 +1,81 @@
-# VNCx — Next.js / Vercel
+# VNCx — Tecnologia & Soluções Digitais
 
-Esta versão adapta o site React/Tailwind à publicação na Vercel usando Next.js. Mantém a apresentação, serviços interativos, página Sobre com formulário ao final, briefing de WhatsApp e cartão digital.
+Site institucional e portfólio da **VNCx — Virtual Networking Company X**, marca criada por Gustavo Rosas, em Manaus, Amazonas.
 
-## Publicar no repositório existente
+O projeto reúne apresentação da empresa, demonstrações interativas de serviços e um fluxo de contato para transformar ideias em propostas de desenvolvimento.
 
-Descompacte o ZIP e copie TODOS os arquivos e pastas para a raiz do repositório VNCx, substituindo os arquivos correspondentes. package.json, package-lock.json, tsconfig.json, next.config.ts e vercel.json ficam diretamente na raiz.
+## Objetivo
 
-As pastas antigas build, scripts, db, drizzle e examples e o antigo vite.config.ts não são usados nesta versão. tsconfig.json exclui esses arquivos da verificação do Next.js, permitindo atualizar o repositório sem removê-los imediatamente.
+Apresentar as soluções da VNCx por meio de uma experiência clara, responsiva e interativa. O site também integra o portfólio de desenvolvimento do autor, demonstrando a aplicação de React, organização de componentes, gerenciamento de estado e construção de interfaces.
 
-## Vercel
+## Serviços apresentados
 
-No projeto, em Settings > Build and Deployment:
+- **CRM:** organização de contatos e oportunidades comerciais.
+- **Desenvolvimento web:** sites e aplicações responsivas.
+- **SaaS:** sistemas na nuvem para conectar processos.
+- **Tráfego pago:** planejamento e acompanhamento de campanhas.
+- **Identidade visual:** criação e apresentação de marcas.
+- **Arquitetura de software:** estrutura técnica, comunicação entre sistemas e proteção de dados.
 
-- Framework Preset: Next.js
-- Root Directory: raiz do repositório (campo vazio ou ./); nunca app, src ou public.
-- Build Command: npm run build
-- Install Command: npm ci
-- Output Directory: padrão do Next.js (.next); remover qualquer override antigo para dist ou public.
-- Node.js: versão 22.x ou compatível com as dependências.
+## Funcionalidades
 
-Após o commit, faça Redeploy da branch main. Aguarde status Ready. Confira se o domínio vn-cx.vercel.app está associado a esse projeto na área Domains. Se o erro continuar, envie os logs de build e a tela de configuração do projeto.
+- Página inicial com apresentação da marca e acesso aos serviços.
+- Modais com demonstrações interativas.
+- CRM demonstrativo com movimentação de oportunidades.
+- Painel SaaS com navegação entre visão geral, projetos e clientes.
+- Simulação animada de indicadores de campanhas.
+- Apresentação animada da identidade visual.
+- Área explicativa sobre TCP/IP, segurança da informação e LGPD.
+- Página “Sobre” com formulário de contato ao final.
+- Briefing em etapas, com validação e revisão dos dados.
+- Integração com WhatsApp para iniciar uma conversa com a mensagem preenchida.
+- Cartão digital com links para site, WhatsApp, Instagram e e-mail.
 
-## Executar localmente
+## Tecnologias
 
-```sh
-npm ci
-npm run dev
-```
+- **React:** componentes e gerenciamento de estado.
+- **Next.js:** estrutura da aplicação e organização das rotas.
+- **TypeScript:** tipagem do código.
+- **Tailwind CSS e CSS:** estilização, responsividade e animações.
+- **HTML semântico:** estrutura do conteúdo.
+- **Radix UI:** componentes de interface acessíveis.
+- **Lucide:** ícones.
+- **Vercel:** hospedagem da aplicação.
 
-Abra http://localhost:3000.
+## Design e experiência
 
-```sh
-npm run typecheck
-npm run build
-npm start
-```
+A identidade utiliza branco como cor principal, com preto e cinza nos elementos de interface. A composição prioriza espaços amplos, hierarquia tipográfica e navegação objetiva.
 
-## Estrutura
+O layout possui adaptações para celulares, tablets e computadores. As animações respeitam a preferência do usuário por movimento reduzido.
 
-- app/: rotas e estilos globais.
-- components/vncx-site.tsx: layout, conteúdo e formulário.
-- components/service-demos.tsx: exemplos interativos.
-- public/logo-vncx.png: logo transparente.
-- lib/utils.ts e components/ui/: componentes de interface.
-- vendor/: estilos de componentes.
+## Organização do código
 
-## Contatos
+| Local | Responsabilidade |
+|---|---|
+| `app/` | Páginas, rotas e estilos globais |
+| `components/vncx-site.tsx` | Layout, conteúdo institucional e formulário |
+| `components/service-demos.tsx` | Demonstrações interativas dos serviços |
+| `components/dashboard-preview.tsx` | Painel visual da página inicial |
+| `components/ui/` | Componentes reutilizáveis de interface |
+| `lib/utils.ts` | Utilitários compartilhados |
+| `public/` | Logo e recursos estáticos |
+| `vendor/` | Estilos complementares |
 
-WhatsApp: 5592992894900
-Instagram: @vncxtech
-SAC: vncxcompany@gmail.com
+## Escopo das demonstrações
 
-O formulário prepara os dados em uma mensagem do WhatsApp; o cliente revisa e confirma o envio. Não há pagamento ou armazenamento de dados no site. As demonstrações são visuais e o gráfico de tráfego usa números hipotéticos.
+Os exemplos de CRM e SaaS são protótipos visuais, sem operações reais de cadastro ou persistência. Os indicadores de tráfego utilizam dados hipotéticos e não representam resultados de clientes ou promessa de retorno.
+
+O formulário prepara uma mensagem para o WhatsApp. O visitante revisa e confirma o envio no aplicativo; não há cobrança nem armazenamento dos dados do formulário pelo site.
+
+O conteúdo sobre segurança e LGPD é explicativo e não constitui declaração de certificação ISO ou conformidade integral.
+
+## Autor e contato
+
+**Gustavo Rosas — VNCx**
+
+- GitHub: [GustavoCdnd](https://github.com/GustavoCdnd)
+- Instagram: [@vncxtech](https://www.instagram.com/vncxtech/)
+- WhatsApp: [(92) 99289-4900](https://wa.me/5592992894900)
+- SAC: [vncxcompany@gmail.com](mailto:vncxcompany@gmail.com)
+
+**Ideias em estruturas reais.**
